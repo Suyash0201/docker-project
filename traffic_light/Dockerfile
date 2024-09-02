@@ -8,12 +8,12 @@ RUN apt update
 RUN apt install apache2 unzip -y
 RUN rm -rf /var/www/html/index.html
 #we are copying source code from local storage
-COPY oxer.zip /var/www/html/oxer.zip
+COPY traffic_light.zip /var/www/html/oxer.zip
 #we are moving to /var/www/html
 WORKDIR /var/www/html
 #we are unzipping and extracting the source code in default deployment enviornment location
-RUN unzip oxer.zip
-RUN mv oxer-html/* .
+RUN unzip traffic_light.zip
+RUN mv traffic_light-html/* .
 #we are exposing our container to a port
 EXPOSE 80
 #we are providing container a processs 
