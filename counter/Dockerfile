@@ -10,7 +10,7 @@ RUN apt update && \
     rm -rf /var/www/html/index.html
 
 # Copy the source code from local storage to the container
-COPY counter/ /var/www/html/
+COPY counter/*/var/www/html/
 
 # Set the working directory
 WORKDIR /var/www/html
