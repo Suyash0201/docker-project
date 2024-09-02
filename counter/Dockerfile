@@ -10,13 +10,10 @@ RUN apt update && \
     rm -rf /var/www/html/index.html
 
 # Copy the source code from local storage to the container
-COPY counter/*/var/www/html/
+COPY counter/ /var/www/html/
 
 # Set the working directory
 WORKDIR /var/www/html
-
-# Optionally unzip if needed (uncomment if there are .zip files to unzip)
-# RUN unzip yourfile.zip
 
 # Expose port 80 to the outside world
 EXPOSE 80
