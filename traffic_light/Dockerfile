@@ -6,7 +6,6 @@ LABEL image="frontendstatic"
 #we are running few commands in our container(during container creation)
 RUN apt update 
 RUN apt install apache2 unzip -y
-RUN rm -rf /var/www/html/index.html
 #we are copying source code from local storage
 COPY traffic_light.zip /var/www/html/traffic_light.zip
 #we are moving to /var/www/html
