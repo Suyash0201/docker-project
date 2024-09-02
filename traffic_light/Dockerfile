@@ -1,28 +1,20 @@
-# Use the latest Ubuntu image as the base
+
+#we are placing a base for our docker image
 FROM ubuntu:latest
-
-# Label the Docker image
+#we are labeling our docker image here
 LABEL image="frontendstatic"
-
-# Install necessary packages, clean up to reduce image size
-RUN apt update && \
-    apt install -y apache2 unzip && \
-    rm -rf /var/www/html/index.html
-
-# Copy the zip file to the container
+#we are running few commands in our container(during container creation)
+RUN apt update 
+RUN apt install apache2 unzip -y
+RUN rm -rf /var/www/html/index.html
+#we are copying source code from local storage
 COPY traffic_light.zip /var/www/html/traffic_light.zip
-
-# Set the working directory
+#we are moving to /var/www/html
 WORKDIR /var/www/html
-
-# Unzip and move files, then clean up
-RUN unzip traffic_light.zip && \
-    mv traffic_light/* . && \
-    rmdir traffic_light && \
-    rm -rf traffic_light.zip
-
-# Expose port 80
+#we are unzipping and extracting the source code in default deployment enviornment location
+RUN unzip traffic_light.zip
+RUN mv traffic light-html/* .
+#we are exposing our container to a port
 EXPOSE 80
-
-# Run Apache in the foreground
-CMD ["apachectl", "-D", "FOREGROUND"]
+#we are providing container a processs 
+CMD ["apachectl", "-D" ,"FOREGROUND"]
