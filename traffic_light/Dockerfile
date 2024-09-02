@@ -1,4 +1,3 @@
-
 # Use the latest Ubuntu image as the base
 FROM ubuntu:latest
 
@@ -18,8 +17,9 @@ WORKDIR /var/www/html
 
 # Unzip and move files, then clean up
 RUN unzip traffic_light.zip && \
-    mv traffic_light-html/* . && \
-    rm -rf traffic_light.zip traffic_light-html
+    mv traffic_light/* . && \
+    rmdir traffic_light && \
+    rm -rf traffic_light.zip
 
 # Expose port 80
 EXPOSE 80
