@@ -1,22 +1,11 @@
-# We are placing a base for our Docker image
-FROM ubuntu:latest
+# Use the official Nginx image from the Docker Hub
+FROM nginx:alpine
 
-# We are labeling our Docker image here
-LABEL image="frontendstatic"
-
-# Update package list and install required packages in one layer
-RUN apt update && \
-    apt install -y apache2 unzip && \
-    rm -rf /var/www/html/index.html
-
-# Copy the source code from local storage to the container
-COPY counter/ /var/www/html/
-
-# Set the working directory
-WORKDIR /var/www/html
+# Copy the HTML, CSS, and JavaScript files to the Nginx server directory
+COPY . /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
 
-# Provide the container with a process
-CMD ["apachectl", "-D", "FOREGROUND"]
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
