@@ -3,55 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery with Music</title>
+    <title>Dog Photo Voting</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
-        h1 {
-            margin: 0;
-        }
-        .gallery {
             display: flex;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #00008B;
+            color: white;
+        }
+
+        .container {
+            display: flex;
             flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
             padding: 20px;
         }
-        .gallery-item {
-            width: 300px;
-            height: 200px;
-            margin: 10px;
-            object-fit: cover;
-            border: 2px solid #ddd;
+
+        .photo-card {
+            background: white;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
+
+        .photo-card:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+        .heart-btn, .love-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .heart-btn:hover {
+            color: #FF1493; /* Color for heart button */
+        }
+
+        .love-btn:hover {
+            color: #FF69B4; /* Color for love button */
+        }
+
+        @media (max-width: 768px) {
+            .photo-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         audio {
             margin: 20px auto;
             display: block;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>My Photo Gallery</h1>
-    </header>
-    <main>
-        <section class="gallery">
-            <img src="IMG-20240822-WA0551.jpg" alt="Photo 1" class="gallery-item">
-            <img src="IMG-20240822-WA0332.jpg" alt="Photo 2" class="gallery-item">
-            <img src="IMG-20240822-WA0181.jpg" alt="Photo 3" class="gallery-item">
-        </section>
-        <audio controls autoplay loop>
-            <source src="Sukh Kalale(PagalWorld.com.sb).mp3"" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-    </main>
+    <div class="container">
+        <div class="photo-card">
+            <img src="https://facts.net/wp-content/uploads/2023/10/14-unbelievable-facts-about-dani-daniels-1696912338.jpg" alt="Doggy 1" class="photo-image">
+            <div class="buttons">
+                <button class="heart-btn">❤️</button>
+                <button class="love-btn">😍</button>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmATVuB68jhbKXkSIQDmSFFFyTUwqp3r8iFA&s" alt="Doggy 2" class="photo-image">
+            <div class="buttons">
+                <button class="heart-btn">❤️</button>
+                <button class="love-btn">😍</button>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://media.gettyimages.com/id/506334332/photo/las-vegas-nv-adult-film-actress-dani-daniels-signs-autographs-during-the-2016-avn-adult.jpg?s=612x612&w=0&k=20&c=8bYqhIGeHgoVVR8uqmkBr0h7_Zp9bWEIPAXj7vYrIUs=" alt="Doggy 3" class="photo-image">
+            <div class="buttons">
+                <button class="heart-btn">❤️</button>
+                <button class="love-btn">😍</button>
+            </div>
+        </div>
+
+        <!-- Add more photo cards as needed -->
+    </div>
+
+    <audio id="background-audio" controls autoplay loop>
+        <source src="SukhKalale.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Set the volume to full (1.0) once the audio has loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-audio');
+            audio.volume = 1.0; // Volume range is from 0.0 to 1.0
+        });
+    </script>
 </body>
 </html>
