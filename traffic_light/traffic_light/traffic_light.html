@@ -85,6 +85,26 @@
     </div>
 
     <script>
+        let intervalId;
+        let currentState = 'stop'; // Start with the 'stop' state
+
+        function updateTrafficLight() {
+            switch (currentState) {
+                case 'stop':
+                    onStop();
+                    currentState = 'ready';
+                    break;
+                case 'ready':
+                    onReady();
+                    currentState = 'go';
+                    break;
+                case 'go':
+                    onGo();
+                    currentState = 'stop';
+                    break;
+            }
+        }
+
         function onStop() {
             document.getElementById("stopLight").style.backgroundColor = "#cf1124";
             document.getElementById("readyLight").style.backgroundColor = "#4b5069";
@@ -111,6 +131,19 @@
             document.getElementById("readyButton").style.backgroundColor = "#1f1d41";
             document.getElementById("goButton").style.backgroundColor = "#199473";
         }
+
+        // Start the traffic light cycle every 3 seconds
+        function startAutomaticCycle() {
+            intervalId = setInterval(updateTrafficLight, 3000); // 3000 milliseconds = 3 seconds
+        }
+
+        // Stop the automatic cycle
+        function stopAutomaticCycle() {
+            clearInterval(intervalId);
+        }
+
+        // Start the cycle when the page loads
+        window.onload = startAutomaticCycle;
     </script>
 </body>
 </html>
