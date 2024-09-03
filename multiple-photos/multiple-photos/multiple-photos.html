@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery with Music</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        audio {
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Photo Gallery</h1>
+    </header>
+    <main>
+        <section class="gallery">
+            <img src="IMG-20240822-WA0551.jpg" alt="Photo 1" class="gallery-item">
+            <img src="IMG-20240822-WA0332.jpg" alt="Photo 2" class="gallery-item">
+            <img src="IMG-20240822-WA0181.jpg" alt="Photo 3" class="gallery-item">
+        </section>
+        <audio controls autoplay loop>
+            <source src="Sukh Kalale(PagalWorld.com.sb).mp3"" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </main>
+</body>
+</html>
